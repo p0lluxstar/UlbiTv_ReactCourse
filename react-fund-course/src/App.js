@@ -35,7 +35,7 @@ function App() {
         <MyInput type='text' placeholder='Описание поста'/>
         <MyButton onClick={addNewPost}>Создать пост</MyButton> {/*при нажатии будет вызываться функция addNewPost*/}
       </form>
-      <PostList props={posts} title={'Посты про JS'}/>
+      <PostList list={posts} title={'Посты про JS'}/>
   
       <br />
       <br />
@@ -43,6 +43,11 @@ function App() {
       <Counter />
       <br />
       <ClassCounter />
+      <br />
+      <br />
+      <br />
+      <TestComponent text={'Тестовый компонент'}/>
+
     </div>
   );
 }

@@ -12,7 +12,7 @@ class ClassCounter extends React.Component {
     }
 
     inc (){
-        this.setState({count: this.state.count + 1})
+        this.setState({count: this.state.count + 1}) // this.setState. Этот метод не нужно создавать в нашем классе - он наследуется от класса React.Component и доступен в любом компоненте по умолчанию. С помощью этого метода мы сможем поменять значение this.state.count, вот так: this.setState({count: this.state.count + 1}).
       }
     
     dec () {
@@ -24,7 +24,7 @@ class ClassCounter extends React.Component {
             <div>
                 <h1>Классовый компонент</h1>
                 <h2>{this.state.count}</h2>
-                <button onClick={this.inc}>Увеличить</button>
+                <button onClick={this.inc}>Увеличить</button> {/*this используется только в классовых компонентах*/ }
                 <button onClick={this.dec}>Уменьшить</button>
             </div>
         )
