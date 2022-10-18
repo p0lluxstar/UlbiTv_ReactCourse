@@ -41,6 +41,8 @@ function App() {
       <br />
       <br />
       <Counter />
+      <br />
+      <ClassCounter />
     </div>
   );
 }

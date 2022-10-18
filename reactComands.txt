@@ -2,3 +2,5 @@ npx create-react-app react-sait
 npm install react-bootstrap bootstrap
 npm install react-router
 npm install react-router-dom
+
+npm i - доустановить все библиотеки на новой машине в случае если проект был скопирован без папки с библиотеками
