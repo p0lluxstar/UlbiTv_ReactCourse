@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import {useRef} from 'react';
 import ClassCounter from './components/ClassCounter';
 import Counter from './components/Counter';
 import './styles/App.css'
@@ -17,22 +18,47 @@ function App() {
     {id: 4, title: 'Javascript', body: 'Description 4'}
   ]);
 
-  const [title, setTitle] = useState('111')
- 
+  const [title, setTitle] = useState('');
+  const [body, setBody] = useState('')
+
+  const bodyInputRef = useRef();
+  
   const addNewPost = (e) =>{
-    e.preventDefault(); // функция имзменяет знаечени браузера по умолчание а именно после нажатия на кнопку страница не обновляется
+    e.preventDefault(); // функция предотвращает поведение браузера по умолчание а именно после нажатия на кнопку страница не обновляется (данные не уходят на сервер type='submit')
+    const newPost = {
+      id: Date.now(), // id обязательно
+      title,
+      body
+    }
+    setPosts([...posts, newPost]) // добавляем новый массив (пост) в существующий список постов
+    setTitle('') // обнуляем состояния поля, отображается placeholder
+    setBody('') // обнуляем состояния поля, отображается placeholder
   }
+
+  
 
   return (
     <div className='App'> 
       <form>
         {/*Управляемый компонент*/}
-          <MyInput 
+          <MyInput
+            value={title} 
             onChange={e => setTitle(e.target.value)}
             type='text'
             placeholder='Название поста'
           />
-        <MyInput type='text' placeholder='Описание поста'/>
+          <MyInput
+           value={body} 
+          onChange={e => setBody(e.target.value)}
+          type='text'
+          placeholder='Описание поста'
+          />
+          {/*Неуправляемый\Некотнолируемый компонент 
+          <MyInput
+          ref={bodyInputRef}
+          type='text'
+          placeholder='Описание поста'
+          />*/}
         <MyButton onClick={addNewPost}>Создать пост</MyButton> {/*при нажатии будет вызываться функция addNewPost*/}
       </form>
       <PostList list={posts} title={'Посты про JS'}/>
